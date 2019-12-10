@@ -1,13 +1,17 @@
 import React from 'react';
 
 const HarryPotterSelect = (props) => {
-  const characterList = props.characters.map((character,index) =>{
-    return <option key={index} value={index}>{character.name}</option>
-  })
+
 
   function handleSelect(event){
     props.onSelect(event.target.value);
   }
+
+  if (!props.characters) return null;
+
+  const characterList = props.characters.map((character,index) =>{
+    return <option key={index} value={index}>{character.name}</option>
+  })
 
   return (
     <select id="HarryPotterSelect" defaultValue="default" onChange={handleSelect}>
